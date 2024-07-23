@@ -1,0 +1,77 @@
+body{
+    font-size: 1.2rem;
+    font-family: "Roboto", sans-serif;
+    /* min-height: 4000px; */
+    
+}
+
+.landing{
+    background-image: url(/pkl/asset/img/landing.jpeg);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    /* filter: blur(5px); */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/* .landing h1, h2{
+    font-family: "Catamaran", sans-serif;
+    font-weight: 600;
+    /* font-size: 6rem;     
+} */
+
+.navbar .mynavbar{
+    position: sticky;
+    /* top: 0;
+    left: 1;
+    right: 0; */
+    height: 9.375vh;
+    background-color: rgb(122, 140, 255)!important;
+    z-index: 9999;
+    /* display: inline-block; */
+}
+
+.mynavbar .navbar-brand img{
+    height: 70px;
+    width: 300px;
+    margin-bottom: 0;
+}
+
+.mynavbar .navbar-collapse{
+    flex-direction: row-reverse;
+    font-family: "Catamaran", sans-serif;
+    font-size: 1.2rem;
+    color: rgba(212,255,178)!important;
+    font-weight: bold;
+}
+
+.landing .content h1{
+    font-family: "Catamaran", sans-serif;
+    font-weight: 600;
+    text-shadow: 0 2px 2px rgb(0 0 0/0.5);
+    color: beige;
+}
+
+.landing .line {
+    width: 100%; 
+    height: 2px; 
+    background-color: black; 
+    margin: 20px 0; 
+}
+
+.landing .content a{
+    color: #4cd038;
+    background-color: #d4ffb2;
+    box-shadow: 0 2px 2px rgb(0 0 0/0.5);
+}
+
+.landing .content a:hover{
+    background-color: #4cd038;
+    color: #d4ffb2;
+}
+
+
+
+
