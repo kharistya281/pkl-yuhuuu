@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIP</title>
+    <title>PKL</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,7 +50,8 @@
             <h1>Dinas Pertanian dan Ketahanan Pangan Provinsi Jawa Timur</h1>
             <div class="line"></div>
             <a href="#" class="btn btn-lg mt-4">Umum</a>
-        </div>
+        </div>    
+        <div class="background"></div>     
     </section>
     <!-- <div class="content">
         <div class="sidebar">
