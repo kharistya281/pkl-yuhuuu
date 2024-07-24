@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AdminX - Advanced Elements</title>
+    <title>PKL</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -142,25 +142,27 @@
                       <label class="form-label">NIP</label>
                       <input class="form-control mb-2 input-credit-card" type="text" placeholder="Masukkan NIP">
                     </div>
-
                     <div class="form-group">
                       <label class="form-label">Nama</label>
                       <input class="form-control input-date mb-2" type="text" placeholder="Masukkan Nama">
                     </div>
-
                     <div class="form-group">
                       <label class="form-label">No Telp</label>
                       <input class="form-control input-numeral mb-2" type="text" placeholder="Masukkan No Telp">
                     </div>
-
                     <div class="form-group">
                       <label class="form-label">Email</label>
                       <input class="form-control input-prefix mb-2" type="text" placeholder="Masukkan Email">
                     </div>
-                  </div>
-                  <!-- <div class="card-footer">
-                    Cleave.js is a small library for input formatting. Check out their <a href="http://nosir.github.io/cleave.js/" target="_blank">documentation</a>. <strong>Nice to know:</strong> There are also Angular and ReactJS components available.
-                  </div> -->
+                    <div class="form-group">
+                      <label class="form-label">Sub Bidang</label>
+                      <input class="form-control input-numeral mb-2" type="text" placeholder="Masukkan Sub Bidang">
+                    </div>
+                    <div class="btn-tambah">
+                      <button type="button">Simpan</button>
+                      <button type="button">Batal</button>
+                    </div>
+                  </div> 
                 </div>
               </div>
             </div>

@@ -217,7 +217,7 @@
                       </tbody>
                     </table>
                     <div class="card-footer d-flex justify-content-end">
-                      <button class="btn btn-sm btn-primary tambah" hre>Tambah</button>
+                      <button class="btn btn-sm btn-primary tambah" onclick="location.href='tambahstaff.php'">Tambah</button>
                       <ul class="pagination pagination-clean pagination-sm mb-0">
                         <li class="page-item disabled">
                           <a class="page-link" href="#" tabindex="-1">‹</a>
