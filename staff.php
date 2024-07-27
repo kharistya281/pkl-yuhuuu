@@ -1,5 +1,16 @@
 <?php
-  require 'functions.php';
+
+require 'functions.php';
+
+// Konfigurasi web page
+$jumlahHalData = 5;
+$jumlahData = count(query("select * from staff"));
+$jumlahHal = ceil(($jumlahData/$jumlahHalData));
+
+$halAktif = (isset($_GET["page"])) ? $_GET["page"]:1;
+$mulaiData = ($jumlahHalData * $halAktif) - $jumlahHalData;
+
+$staff = query("select * from staff limit $mulaiData, $jumlahHalData");
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +83,7 @@
           </li>
 
           <li class="sidebar-nav-item">
-            <a href="#" class="sidebar-nav-link">
+            <a href="mitra.php" class="sidebar-nav-link">
               <span class="sidebar-nav-icon">
                 <i data-feather="users"></i>
               </span>
@@ -127,7 +138,6 @@
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
                 <li class="breadcrumb-item active aria-current=page">Staff</a></li>
-                <!-- <li class="breadcrumb-item active  aria-current="page">Regular Tables</li> -->
               </ol>
             </nav>
 
@@ -140,84 +150,56 @@
                 <div class="card mb-grid">
                   <div class="card-header d-flex justify-content-between align-items-center">
                     <div class="card-header-title">Table</div>
+                    <button class="btn btn-sm btn-primary tambah" onclick="location.href='tambahstaff.php'">Tambah</button>
                   </div>
                   <div class="table-responsive-md">
                     <table class="table table-actions table-striped table-hover mb-0">
                       <thead>
                         <tr>
-                          <th scope="col">
+                          <!-- <th scope="col">
                             <label class="custom-control custom-checkbox m-0 p-0">
                               <input type="checkbox" class="custom-control-input table-select-all">
                               <span class="custom-control-indicator"></span>
                             </label>
-                          </th>
-                          <th scope="col">First Name</th>
-                          <th scope="col">Last Name</th>
-                          <th scope="col">Username</th>
-                          <th scope="col">Roles</th>
+                          </th> -->
+                          <th scope="col">No</th>
+                          <th scope="col">NIP</th>
+                          <th scope="col">Nama</th>
+                          <th scope="col">No Telp</th>
+                          <th scope="col">Email</th>
                           <th scope="col">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row">
+                          <!-- <th scope="row">
                             <label class="custom-control custom-checkbox m-0 p-0">
                               <input type="checkbox" class="custom-control-input table-select-row">
                               <span class="custom-control-indicator"></span>
                             </label>
-                          </th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                          <td>
+                          </th> -->
+                          <?php
+                          $no = 1;
+                          foreach($staff as $row):?>
+                          <td><?= $no; ?></td>
+                          <td><?= $row["id_staff"]; ?></td>
+                          <td><?= $row["nama_staff"]; ?></td>
+                          <td><?= $row["no_telp_staff"]; ?></td>
+                          <td><?= $row["email_staff"]; ?></td>
+                          <!-- <td>
                             <span class="badge badge-pill badge-primary">Admin</span>
-                          </td>
+                          </td> -->
                           <td>
-                            <button class="btn btn-sm btn-primary">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
+                            <button class="btn btn-sm btn-primary" onclick="location.href='updatestaff.php?id=<?= $row['id_staff']; ?>'">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="if (confirm('Apakah Anda yakin ingin menghapus data staff?')) { location.href='hapustaff.php?id=<?= $row['id_staff']; ?>'; }">Delete</button>
                           </td>
                         </tr>
-                        <!-- <tr>
-                          <th scope="row">
-                            <label class="custom-control custom-checkbox m-0 p-0">
-                              <input type="checkbox" class="custom-control-input table-select-row">
-                              <span class="custom-control-indicator"></span>
-                            </label>
-                          </th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                          <td>
-                            <span class="badge badge-pill badge-primary">Author</span>
-                            <span class="badge badge-pill badge-primary">Developer</span>
-                          </td>
-                          <td>
-                            <button class="btn btn-sm btn-primary">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <label class="custom-control custom-checkbox m-0 p-0">
-                              <input type="checkbox" class="custom-control-input table-select-row">
-                              <span class="custom-control-indicator"></span>
-                            </label>
-                          </th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                          <td>
-                            <span class="badge badge-pill badge-danger">Inactive</span>
-                          </td>
-                          <td>
-                            <button class="btn btn-sm btn-primary">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                          </td>
-                        </tr> -->
+                        <?php
+                        $no++;
+                        endforeach;?>
                       </tbody>
                     </table>
                     <div class="card-footer d-flex justify-content-end">
-                      <button class="btn btn-sm btn-primary tambah" onclick="location.href='tambahstaff.php'">Tambah</button>
                       <ul class="pagination pagination-clean pagination-sm mb-0">
                         <li class="page-item disabled">
                           <a class="page-link" href="#" tabindex="-1">‹</a>
@@ -234,185 +216,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- <div class="row">
-              <div class="col-md-6">
-                <!-- Table with border 
-                <div class="card mb-grid">
-                  <div class="card-header d-flex justify-content-between align-items-center">
-                    <div class="card-header-title">Table with border</div>
-                  </div>
-                  <div class="card-body">
-                    <table class="table table-bordered mb-0">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">First Name</th>
-                          <th scope="col">Last Name</th>
-                          <th scope="col">Username</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <!-- // Table with border 
-
-                <!-- Table small 
-                <div class="card mb-grid">
-                  <div class="card-header d-flex justify-content-between align-items-center">
-                    <div class="card-header-title">Table Small</div>
-                  </div>
-                  <table class="table table-sm mb-0">
-                    <thead>
-                      <tr>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Username</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- // Table small 
-
-              </div>
-
-              <div class="col-md-6">
-
-                <!-- Table Seamless 
-                <div class="card mb-grid">
-                  <div class="card-header d-flex justify-content-between align-items-center">
-                    <div class="card-header-title">Table seamless</div>
-                  </div>
-                  <table class="table table-hover mb-0">
-                    <thead>
-                      <tr>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Username</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                  <div class="card-footer d-flex justify-content-end">
-                    <ul class="pagination pagination-clean pagination-sm mb-0">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">‹</a>
-                      </li>
-                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">›</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <!-- // Table seamless -->
-
-                <!-- Table seamless striped 
-                <div class="card mb-grid">
-                  <div class="card-header d-flex justify-content-between align-items-center">
-                    <div class="card-header-title">Table seamless (striped)</div>
-                  </div>
-                  <table class="table table-striped mb-0">
-                    <thead>
-                      <tr>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Username</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                  <div class="card-footer d-flex justify-content-end">
-                    <ul class="pagination pagination-clean pagination-sm mb-0">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">‹</a>
-                      </li>
-                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">›</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <!-- // Table seamless striped 
-
-              </div>
-            </div> -->
           </div>
         </div>
       </div>

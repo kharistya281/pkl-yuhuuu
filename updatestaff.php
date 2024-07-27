@@ -9,14 +9,20 @@ session_start();
 
 require 'functions.php';
 
+// get data from url 
+$idstaff = $_GET["id"];
+
+// get query data based on id
+$staff = query("SELECT * FROM STAFF WHERE ID_STAFF = $idstaff")[0];
+
 if(isset($_POST["submit"])){
   // var_dump($_POST);
   // die;
-  if(tambahStaff($_POST) > 0){
+  if(updateStaff($_POST) > 0){
     // var_dump($_POST);
     echo "
         <script>
-            alert('Tambah data staff berhasil');
+            alert('Edit data staff berhasil');
             document.location.href = 'staff.php';
         </script>
         ";
@@ -159,7 +165,7 @@ if(isset($_POST["submit"])){
             </nav>
 
             <div class="pb-3">
-              <h1>Tambah Data Staff</h1>
+              <h1>Edit Data Staff</h1>
             </div>
 
             <div class="row">
@@ -172,19 +178,23 @@ if(isset($_POST["submit"])){
                     <div class="card-body">
                       <div class="form-group">
                         <label class="form-label">NIP</label>
-                        <input class="form-control mb-2 input-credit-card" type="text" placeholder="Masukkan NIP" name="nip" require>
+                        <input class="form-control mb-2 input-credit-card" type="text" placeholder="Masukkan NIP" name="nip" require 
+                        value="<?= $staff["id_staff"]; ?>">
                       </div>
                       <div class="form-group">
                         <label class="form-label">Nama</label>
-                        <input class="form-control input-date mb-2" type="text" placeholder="Masukkan Nama" name="nama" require>
+                        <input class="form-control input-date mb-2" type="text" placeholder="Masukkan Nama" name="nama" require
+                        value="<?= $staff["nama_staff"]; ?>">
                       </div>
                       <div class="form-group">
                         <label class="form-label">No Telp</label>
-                        <input class="form-control input-numeral mb-2" type="text" placeholder="Masukkan No Telp" name="notelp" require>
+                        <input class="form-control input-numeral mb-2" type="text" placeholder="Masukkan No Telp" name="notelp" require
+                        value="<?= $staff["no_telp_staff"]; ?>">
                       </div>
                       <div class="form-group">
                         <label class="form-label">Email</label>
-                        <input class="form-control input-prefix mb-2" type="text" placeholder="Masukkan Email" name="email" require>
+                        <input class="form-control input-prefix mb-2" type="text" placeholder="Masukkan Email" name="email" require
+                        value="<?= $staff["email_staff"]; ?>">
                       </div>
                         <button class="btn btn-sm btn-primary" name="submit" type="submit" onclick="return confirm('Yakin data disimpan?')">
                           Simpan
