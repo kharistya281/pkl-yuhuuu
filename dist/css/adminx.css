@@ -1828,6 +1828,8 @@ select.form-control:focus::-ms-value{
 .form-group{
     margin-bottom:1rem
 }
+
+
 .form-text{
     display:block;
     margin-top:.25rem
@@ -3877,6 +3879,26 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
     -ms-flex:1 1 auto;
     flex:1 1 auto;
     padding:1.25rem
+}
+
+.card-body>.menuu{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.card-body .menuu a{
+    padding-right: 300px;
+}
+
+.card-body .btn-tambah{
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.card-body .btn-tambah button{
+    border-radius: 4px;
+    margin-right: 10px;
 }
 .card-title{
     margin-bottom:.75rem
@@ -10010,14 +10032,16 @@ span.flatpickr-weekday{
     padding-top:.25rem;
     display:-webkit-box;
     display:-ms-flexbox;
-    display:flex
+    display:flex;
 }
 .card-header-action{
     display:block;
-    margin-left:.25rem
+    margin-left:.25rem;
+
 }
 .card-header-action .feather{
-    width:1rem
+    width:1rem;
+    color: #90D26D!important;
 }
 .card-header-action:active,.card-header-action:focus,.card-header-action:hover{
     text-decoration:none
