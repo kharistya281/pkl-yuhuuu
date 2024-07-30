@@ -4,13 +4,28 @@ require 'functions.php';
 
 // Konfigurasi web page
 $jumlahHalData = 5;
-$jumlahData = count(query("select * from staff"));
+$jumlahData = count(query("SELECT mitra.nama_mitra as Mitra, kegiatan.nama_kegiatan as Kegiatan, staff.nama_staff as Penanggung_Jawab, 
+kegiatan.tanggal_kegiatan as Tanggal, realisasi_kegiatan.alasan, realisasi_kegiatan.bukti, realisasi_kegiatan.kritik_saran 
+FROM realisasi_kegiatan 
+JOIN mitra on mitra.id_mitra = realisasi_kegiatan.id_mitra 
+JOIN kegiatan on kegiatan.id_kegiatan = realisasi_kegiatan.id_kegiatan 
+JOIN staff on staff.id_staff = kegiatan.id_staff 
+GROUP BY mitra.nama_mitra, kegiatan.nama_kegiatan, staff.nama_staff, kegiatan.tanggal_kegiatan, realisasi_kegiatan.alasan, 
+realisasi_kegiatan.bukti, realisasi_kegiatan.kritik_saran"));
 $jumlahHal = ceil(($jumlahData/$jumlahHalData));
 
 $halAktif = (isset($_GET["page"])) ? $_GET["page"]:1;
 $mulaiData = ($jumlahHalData * $halAktif) - $jumlahHalData;
 
-$staff = query("select * from staff limit $mulaiData, $jumlahHalData");
+$datares = query("SELECT mitra.nama_mitra as Mitra, kegiatan.nama_kegiatan as Kegiatan, staff.nama_staff as Penanggung_Jawab, 
+kegiatan.tanggal_kegiatan as Tanggal, realisasi_kegiatan.alasan, realisasi_kegiatan.bukti, realisasi_kegiatan.kritik_saran 
+FROM realisasi_kegiatan 
+JOIN mitra on mitra.id_mitra = realisasi_kegiatan.id_mitra 
+JOIN kegiatan on kegiatan.id_kegiatan = realisasi_kegiatan.id_kegiatan 
+JOIN staff on staff.id_staff = kegiatan.id_staff 
+GROUP BY mitra.nama_mitra, kegiatan.nama_kegiatan, staff.nama_staff, kegiatan.tanggal_kegiatan, realisasi_kegiatan.alasan, 
+realisasi_kegiatan.bukti, realisasi_kegiatan.kritik_saran
+LIMIT $mulaiData, $jumlahHalData");
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +109,7 @@ $staff = query("select * from staff limit $mulaiData, $jumlahHalData");
           </li>
 
           <li class="sidebar-nav-item">
-            <a href="staff.php" class="sidebar-nav-link active">
+            <a href="staff.php" class="sidebar-nav-link">
               <span class="sidebar-nav-icon">
                 <i data-feather="user"></i>
               </span>
@@ -105,7 +120,7 @@ $staff = query("select * from staff limit $mulaiData, $jumlahHalData");
           </li>
 
           <li class="sidebar-nav-item">
-            <a href="dataresponden.php" class="sidebar-nav-link">
+            <a href="dataresponden.php" class="sidebar-nav-link active">
               <span class="sidebar-nav-icon">
                 <i data-feather="folder"></i>
               </span>
@@ -137,12 +152,12 @@ $staff = query("select * from staff limit $mulaiData, $jumlahHalData");
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-                <li class="breadcrumb-item active aria-current=page">Staff</a></li>
+                <li class="breadcrumb-item active aria-current=page">Data Responden</a></li>
               </ol>
             </nav>
 
             <div class="pb-3">
-              <h1>Staff</h1>
+              <h1>Data Responden</h1>
             </div>
 
             <div class="row">
@@ -150,7 +165,7 @@ $staff = query("select * from staff limit $mulaiData, $jumlahHalData");
                 <div class="card mb-grid">
                   <div class="card-header d-flex justify-content-between align-items-center">
                     <div class="card-header-title">Table</div>
-                    <button class="btn btn-sm btn-primary tambah" onclick="location.href='tambahstaff.php'">Tambah</button>
+                    <!-- <button class="btn btn-sm btn-primary tambah" onclick="location.href='tambahstaff.php'">Tambah</button> -->
                   </div>
                   <div class="table-responsive-md">
                     <table class="table table-actions table-striped table-hover mb-0">
@@ -163,11 +178,13 @@ $staff = query("select * from staff limit $mulaiData, $jumlahHalData");
                             </label>
                           </th> -->
                           <th scope="col">No</th>
-                          <th scope="col">NIP</th>
-                          <th scope="col">Nama</th>
-                          <th scope="col">No Telp</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Actions</th>
+                          <th scope="col">Mitra</th>
+                          <th scope="col">Kegiatan</th>
+                          <th scope="col">Penanggung Jawab</th>
+                          <th scope="col">Tanggal</th>
+                          <th scope="col">Alasan</th>
+                          <th scope="col">Bukti</th>
+                          <th scope="col">Kritik dan Saran</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -180,19 +197,22 @@ $staff = query("select * from staff limit $mulaiData, $jumlahHalData");
                           </th> -->
                           <?php
                           $no = 1;
-                          foreach($staff as $row):?>
+                          foreach($datares as $row):?>
                           <td><?= $no; ?></td>
-                          <td><?= $row["id_staff"]; ?></td>
-                          <td><?= $row["nama_staff"]; ?></td>
-                          <td><?= $row["no_telp_staff"]; ?></td>
-                          <td><?= $row["email_staff"]; ?></td>
+                          <td><?= $row["Mitra"]; ?></td>
+                          <td><?= $row["Kegiatan"]; ?></td>
+                          <td><?= $row["Penanggung_Jawab"]; ?></td>
+                          <td><?= $row["Tanggal"]; ?></td>
+                          <td><?= $row["alasan"]; ?></td>
+                          <td><?= $row["bukti"]; ?></td>
+                          <td><?= $row["kritik_saran"]; ?></td>
                           <!-- <td>
                             <span class="badge badge-pill badge-primary">Admin</span>
                           </td> -->
-                          <td>
+                          <!-- <td>
                             <button class="btn btn-sm btn-primary" onclick="location.href='updatestaff.php?id=<?= $row['id_staff']; ?>'">Edit</button>
                             <button class="btn btn-sm btn-danger" onclick="if (confirm('Apakah Anda yakin ingin menghapus data staff?')) { location.href='hapustaff.php?id=<?= $row['id_staff']; ?>'; }">Delete</button>
-                          </td>
+                          </td> -->
                         </tr>
                         <?php
                         $no++;

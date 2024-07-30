@@ -157,6 +157,7 @@ if(isset($_POST["submit"])){
                 <li class="breadcrumb-item active  aria-current="page">Tambah Staff</li>
               </ol>
             </nav>
+            <!-- End BreadCrumb -->
 
             <div class="pb-3">
               <h1>Tambah Data Staff</h1>
@@ -189,7 +190,7 @@ if(isset($_POST["submit"])){
                         <button class="btn btn-sm btn-primary" name="submit" type="submit" onclick="return confirm('Yakin data disimpan?')">
                           Simpan
                         </button>
-                        <button class="btn btn-sm btn-danger" type="reset">Batal</button>
+                        <button class="btn btn-sm btn-danger" onclick="location.href='staff.php'">Batal</button>
                     </div> 
                   </form>
                 </div>
