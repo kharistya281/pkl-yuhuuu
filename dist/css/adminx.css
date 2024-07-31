@@ -3880,7 +3880,7 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
     flex:1 1 auto;
     padding:1.25rem
 }
-
+/* 
 .card-body>.menuu{
     display: flex;
     justify-content: space-around;
@@ -3889,7 +3889,7 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 
 .card-body .menuu a{
     padding-right: 300px;
-}
+} */
 
 .card-body .btn-tambah{
     display: flex;
@@ -9755,7 +9755,7 @@ span.flatpickr-weekday{
     margin:0;
     padding:.5rem 0;
     font-size:.875rem;
-    background-color:#f8f8f8
+    background-color:#90D26D!important;
 }
 .adminx-sidebar,.sidebar-nav-end,.sidebar-nav-name{
     -webkit-transition:all .2s ease-in-out;
