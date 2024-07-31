@@ -115,14 +115,41 @@ if(isset($jmlMitra[0]['totalmitra'])){
           </li>
 
           <li class="sidebar-nav-item">
-            <a href="dataresponden.php" class="sidebar-nav-link">
+            <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#example" aria-expanded="false" aria-controls="example">
               <span class="sidebar-nav-icon">
                 <i data-feather="folder"></i>
               </span>
               <span class="sidebar-nav-name">
                 Data Responden
               </span>
+              <span class="sidebar-nav-end">
+                <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+              </span>
             </a>
+
+            <ul class="sidebar-sub-nav collapse" id="example">
+              <li class="sidebar-nav-item">
+                <a href="datakepuasan.php" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    Ke
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Kepuasan
+                  </span>
+                </a>
+              </li>
+
+              <li class="sidebar-nav-item">
+                <a href="dataresponden.php" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    Re
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Realisasi
+                  </span>
+                </a>
+              </li>
+            </ul>
           </li>
 
           <li class="sidebar-nav-item">
@@ -230,6 +257,11 @@ if(isset($jmlMitra[0]['totalmitra'])){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     <script src="./dist/js/vendor.js"></script>
     <script src="./dist/js/adminx.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        // Initialize feather icons
+        feather.replace();
+    </script>
 
     <!-- If you prefer vanilla JS these are the only required scripts -->
     <!-- script src="./dist/js/vendor.js"></script>

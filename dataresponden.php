@@ -120,14 +120,41 @@ LIMIT $mulaiData, $jumlahHalData");
           </li>
 
           <li class="sidebar-nav-item">
-            <a href="dataresponden.php" class="sidebar-nav-link active">
+            <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#example" aria-expanded="false" aria-controls="example">
               <span class="sidebar-nav-icon">
                 <i data-feather="folder"></i>
               </span>
               <span class="sidebar-nav-name">
                 Data Responden
               </span>
+              <span class="sidebar-nav-end">
+                <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+              </span>
             </a>
+
+            <ul class="sidebar-sub-nav collapse" id="example">
+              <li class="sidebar-nav-item">
+                <a href="datakepuasan.php" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    Ke
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Kepuasan
+                  </span>
+                </a>
+              </li>
+
+              <li class="sidebar-nav-item">
+                <a href="dataresponden.php" class="sidebar-nav-link active">
+                  <span class="sidebar-nav-abbr">
+                    Re
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Realisasi
+                  </span>
+                </a>
+              </li>
+            </ul>
           </li>
 
           <li class="sidebar-nav-item">
@@ -152,12 +179,12 @@ LIMIT $mulaiData, $jumlahHalData");
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-                <li class="breadcrumb-item active aria-current=page">Data Responden</a></li>
+                <li class="breadcrumb-item active aria-current=page">Data Realisasi Kegiatan</a></li>
               </ol>
             </nav>
 
             <div class="pb-3">
-              <h1>Data Responden</h1>
+              <h1>Data Realisasi Kegiatan</h1>
             </div>
 
             <div class="row">

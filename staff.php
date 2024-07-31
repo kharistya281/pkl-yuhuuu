@@ -105,14 +105,41 @@ $staff = query("select * from staff limit $mulaiData, $jumlahHalData");
           </li>
 
           <li class="sidebar-nav-item">
-            <a href="dataresponden.php" class="sidebar-nav-link">
+            <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#example" aria-expanded="false" aria-controls="example">
               <span class="sidebar-nav-icon">
                 <i data-feather="folder"></i>
               </span>
               <span class="sidebar-nav-name">
                 Data Responden
               </span>
+              <span class="sidebar-nav-end">
+                <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+              </span>
             </a>
+
+            <ul class="sidebar-sub-nav collapse" id="example">
+              <li class="sidebar-nav-item">
+                <a href="datakepuasan.php" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    Ke
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Kepuasan
+                  </span>
+                </a>
+              </li>
+
+              <li class="sidebar-nav-item">
+                <a href="dataresponden.php" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    Re
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Realisasi
+                  </span>
+                </a>
+              </li>
+            </ul>
           </li>
 
           <li class="sidebar-nav-item">
@@ -167,6 +194,7 @@ $staff = query("select * from staff limit $mulaiData, $jumlahHalData");
                           <th scope="col">Nama</th>
                           <th scope="col">No Telp</th>
                           <th scope="col">Email</th>
+                          <th scope="col">Sub Bidang</th>
                           <th scope="col">Actions</th>
                         </tr>
                       </thead>
@@ -185,6 +213,7 @@ $staff = query("select * from staff limit $mulaiData, $jumlahHalData");
                           <td><?= $row["id_staff"]; ?></td>
                           <td><?= $row["nama_staff"]; ?></td>
                           <td><?= $row["no_telp_staff"]; ?></td>
+                          <td><?= $row["email_staff"]; ?></td>
                           <td><?= $row["email_staff"]; ?></td>
                           <!-- <td>
                             <span class="badge badge-pill badge-primary">Admin</span>
