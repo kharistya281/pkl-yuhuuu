@@ -186,31 +186,37 @@ if(isset($jmlMitra[0]['totalmitra'])){
               <h2>Selamat Datang, Admin!</h2>
             </div>
             <div class="row">
-            <div class="col">
+            <div class="col-md-6">
                 <div class="card">
                   <div class="card-header d-flex justify-content-between align-items-center">
                     <div class="card-header-title">Menu</div>
 
-                    <nav class="card-header-actions">
+                    <!-- <nav class="card-header-actions">
                       <a class="card-header-action" data-toggle="collapse" href="#card1" aria-expanded="false" aria-controls="card1">
                         <i data-feather="minus-circle"></i>
                       </a>
-                    </nav>
+                    </nav> -->
                   </div>
                   <div class="card-body collapse show d-flex justify-content-around" id="card1">
                     <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
                     <a href="#" class="btn btn-primary">
                       <i data-feather="activity"></i>
                       Kegiatan</a>
-                    <a href="#" class="btn btn-primary">
+                    <a href="staff.php" class="btn btn-primary">
                       <i data-feather="users"></i>  
                       Mitra</a>
                     <a href="staff.php" class="btn btn-primary">
                       <i data-feather="user"></i>  
                       Staff</a>
-                    <a href="dataresponden.php" class="btn btn-primary">
-                      <i data-feather="folder"></i>
-                      Data Responden</a>
+                      <div class="dropdown">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i data-feather="folder"></i>
+                        Data Responden</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <li><a class="dropdown-item" href="datakepuasan.php">Data Kepuasan</a></li>
+                          <li><a class="dropdown-item" href="dataresponden.php">Data Realisasi</a></li>
+                        </ul>
+                      </div>
                   </div>
                 </div>
               </div>
